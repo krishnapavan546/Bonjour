@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ysl.bonjour.controller.ServiceController">
+   <children>     
+      <Button fx:id="hangout" layoutX="385.0" layoutY="435.0" mnemonicParsing="false" onAction="#setHangout" prefHeight="22.0" prefWidth="133.0" text="hangout" />
+      <Button fx:id="captureFirst" layoutX="460.0" layoutY="230.0" mnemonicParsing="false" onAction="#setCapture" prefHeight="22.0" prefWidth="133.0" text="After" />
+      <ImageView fx:id="imageView" fitHeight="94.0" fitWidth="122.0" layoutX="302.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
+         
+      <ImageView fx:id="imageViewFirst" fitHeight="94.0" fitWidth="133.0" layoutX="456.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="captureLater" layoutX="300.0" layoutY="230.0" mnemonicParsing="false" onAction="#setCapture" prefHeight="22.0" prefWidth="133.0" text="Before" />
+      <TextField layoutX="70.0" layoutY="164.0" prefHeight="22.0" prefWidth="143.0" />
+      <TextField layoutX="70.0" layoutY="208.0" prefHeight="22.0" prefWidth="143.0" />
+      <TextField layoutX="70.0" layoutY="249.0" prefHeight="22.0" prefWidth="143.0" />
+      <Button layoutX="69.0" layoutY="436.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="143.0" text="Finish" />
+      <TextArea layoutX="70.0" layoutY="283.0" prefHeight="141.0" prefWidth="143.0" />
+      <TextField layoutX="384.0" layoutY="308.0" />
+      <TextField layoutX="385.0" layoutY="345.0" />
+      <ImageView fitHeight="58.0" fitWidth="66.0" layoutX="282.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/yslbeauty.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="28.0" fitWidth="252.0" layoutX="254.0" layoutY="512.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@/yslwhole.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="70.0" layoutY="72.0" prefHeight="35.0" prefWidth="187.0" text="Fill up the form Makeup details" textFill="#FFFFFF">
+         <font>
+            <Font name="Arial Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="353.0" layoutY="71.0" prefHeight="28.0" prefWidth="232.0" text="Press hangout button to start video" textFill="#FFFFFF">
+         <font>
+            <Font name="Arial Italic" size="13.0" />
+         </font>
+      </Label>
+      <!--<Rectangle arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="107.0" layoutX="296.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="133.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="YELLOW" height="107.0" layoutX="451.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="143.0" />-->
+   </children>
+</Pane>
