@@ -1,5 +1,0 @@
-projectKey=org.sonarqube:Bonjour
-serverUrl=http://localhost:9000
-dashboardUrl=http://localhost:9000/dashboard/index/org.sonarqube:Bonjour
-ceTaskId=AVThrqUiOlCI3Aoj9V2b
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVThrqUiOlCI3Aoj9V2b
