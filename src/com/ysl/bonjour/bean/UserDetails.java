@@ -5,18 +5,24 @@ import java.util.Map;
 import com.ysl.bonjour.util.Constants;
 import com.ysl.bonjour.util.SessionManager;
 
+
+/**
+ * @author pku134
+ *
+ *This class is a bean of user details and can add more fields as per requirement related to user details.
+ */
 public class UserDetails {
 
 	private String userName;
 	private String password;
 	private String emailId;
-	private UserDetails userDetails;
 	private String country;
 	private String expectFor;
-	private SessionManager sessionManager = new SessionManager();
-
+	
 	public UserDetails(Map loginDetails) {
-
+		/*
+		 * Will use this to get Map details to fetch as input for meetingDetailed List
+		 */
 	}
 
 	public UserDetails(String userName, String password) {
@@ -57,16 +63,6 @@ public class UserDetails {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-
-	public UserDetails getUserDetails() {
-
-		return userDetails;
-	}
-
-	public void setUserDetails(UserDetails userDetails) {
-		this.userDetails = userDetails;
-	}
-
 	public String getCountry() {
 		return country;
 	}

@@ -12,6 +12,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 
 import javax.imageio.ImageIO;
+import javax.swing.plaf.ColorUIResource;
 
 import org.apache.log4j.Logger;
 
@@ -21,6 +22,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -36,24 +38,23 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+
+/**
+ * @author pku134
+ *	Service class will have connectivity with other classes.
+ */
 public class ServiceController implements Controller {
 
 	@FXML private Button hangout;
 	@FXML private Button captureFirst;
 	@FXML private Button captureLater;
-	@FXML private ImageView imageView;
+	@FXML private ImageView imageViewLater;
 	@FXML private Button email;
-	@FXML private ImageView imageViewFirst;
-	
+	@FXML private ImageView imageViewFirst;	
 	private Logger log = Logger.getLogger(ServiceController.class);
 	private Scene scene;
 	private Robot robot;
 	private Rectangle rectangle;
-	/*private HBox hboxFirst;
-	private HBox hboxLater;*/
-	
-	
-
 	@Override
 	public Scene getScene() {
 		try {
@@ -61,20 +62,17 @@ public class ServiceController implements Controller {
 			Pane pane = (Pane) FXMLLoader.load(ServiceController.class.getClassLoader().getResource(Constants.SERVICE_FXML_PATH));
 			if (pane != null) {
 				pane.setBackground(new Background(new BackgroundFill(Color.BLACK,new CornerRadii(10), new Insets(5))));
-				scene = new Scene(pane);
-				
+				scene = new Scene(pane);				
 				scene.setRoot(pane);
 				return scene;
 			} else {
-				log.error("ERROR::");
+				log.error("ERROR::An error due to receival of null pane");
 			}
-
 		} catch (IOException e) {
 			log.error("ERROR::Error occured in getting hangout page",e);
 			scene= null;
 		}
-		return scene;
-		
+		return scene;	
 	}	
 	@Override
 	public void setScene(Scene scene) {
@@ -113,16 +111,6 @@ public class ServiceController implements Controller {
 						pw.setArgb(i, j, bufferedImage.getRGB(i, j));
 					}
 				}	
-		/*	HBox hboxFirst=new HBox();
-			HBox hboxLater=new HBox();
-			String cssBordering = "-fx-border-color:yellow; \n"
-						+ "-fx-border-insets:3;\n"
-			            + "-fx-border-radius:7;\n"
-			            + "-fx-border-width:1.0";
-			
-			hboxFirst.setStyle(cssBordering);
-			hboxLater.setStyle(cssBordering);*/
-			
 			String buttonName=((Button)event.getSource()).getId();
 			if ("captureFirst".equals(buttonName)) {
 				boolean imageStatus = ImageIO.write(SwingFXUtils.fromFXImage(image, bufferedImage), Constants.CAPTURED_IMAGE_TYPE, new File(Constants.CAPTURED_IMAGE_PATH));
@@ -137,8 +125,8 @@ public class ServiceController implements Controller {
 				boolean imageStatus = ImageIO.write(SwingFXUtils.fromFXImage(image, bufferedImage), Constants.CAPTURED_IMAGE_TYPE, new File(Constants.CAPTUREDLATER_IMAGE_PATH));
 				log.debug("DEBUG::Image Save status was "+imageStatus);
 				log.info("INFO::Image Saved on to disk at" +new File(Constants.CAPTUREDLATER_IMAGE_PATH).getPath());
-				imageView.setImage(image);
-				imageView.getImage();
+				imageViewLater.setImage(image);
+				imageViewLater.getImage();
 				captureLater.setDisable(true);
 			}
 			stage.show();

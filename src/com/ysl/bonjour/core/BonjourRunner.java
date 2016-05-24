@@ -4,13 +4,16 @@ import org.apache.log4j.Logger;
 
 import com.ysl.bonjour.controller.BonjourControllerFactory;
 import com.ysl.bonjour.controller.Controller;
-import com.ysl.bonjour.controller.ServiceController;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * @author pku134
+ *
+ *	This is the executor class for the application and will start main flow from here.
+ */
 public class BonjourRunner extends Application {
 	Stage stage;
 	private Logger log = Logger.getLogger(BonjourRunner.class);
@@ -25,6 +28,7 @@ public class BonjourRunner extends Application {
 		Controller controller = BonjourControllerFactory.getController("UserController");
 		Scene scene = (Scene) controller.getScene();
 		stage.setTitle("Bonjour YSL");
+		stage.resizableProperty().setValue(Boolean.FALSE);
 		stage.setScene(scene);
 		stage.show();
 	}
@@ -37,16 +41,16 @@ public class BonjourRunner extends Application {
 				Scene scene = (Scene) controller.getScene();
 				if (scene != null) {
 					stage.setScene(scene);
+					stage.setTitle("Bonjour YSL");
+					stage.resizableProperty().setValue(Boolean.FALSE);
 					stage.show();
 				} else {
-					log.info("INFO::Scene is not receved");
-					throw new Exception();
+					log.info("Error::Scene is not received");
 				}
 			} else {
-				log.info("INFO::Controller is not receved");
-				throw new Exception();
+				log.info("ERROR::Controller is not received");				
 			}
-		} catch (Exception e) {
+		} catch (Exception e){
 			log.error("ERROR::Error received in getting Controller scene", e);
 		}
 	}

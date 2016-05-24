@@ -28,6 +28,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
+
+/**
+ * @author pku134
+ *
+ *	This is for Meeting detailed Controller
+ */
 public class MakeupDetailedController implements Controller {
 
 	private Logger log = Logger.getLogger(MakeupDetailedController.class);
@@ -85,7 +91,7 @@ public class MakeupDetailedController implements Controller {
 		}
 
 	}
-public class ButtonCell extends TableCell<UserDetails, Button> {		
+	public class ButtonCell extends TableCell<UserDetails, Button> {		
 	ButtonCell() {
 			service=new Button();
 			if (service != null) {
@@ -106,7 +112,7 @@ public class ButtonCell extends TableCell<UserDetails, Button> {
 		
 		super.updateItem(arg0, arg1);
 		if(!arg1){
-            service.setText("Start Meeting ");
+            service.setText("Start Session ");
             setGraphic(service);
         } else {
             setGraphic(null);
@@ -119,34 +125,40 @@ public class ButtonCell extends TableCell<UserDetails, Button> {
 	private TableView<UserDetails> getMeetingDetails(String meetingID) {
 
 		log.info("Meeting ID accessing is " + meetingID);
-		TableView<UserDetails> table = new TableView<UserDetails>();
+		TableView<UserDetails> table = new TableView<>();
 		table.setEditable(true);
 		table.setMaxWidth(2000);
 		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		List<UserDetails> list = new ArrayList<>();
-		list.add(new UserDetails("Pavan","pavanbvrk@gmail.com","India","Change" ));
+		list.add(new UserDetails(Constants.USER_NAME,Constants.FROM_EMAIL_ID,Constants.COUNTRY,"Change" ));
 		ObservableList<UserDetails> items = FXCollections.observableList(list);
 		TableColumn<UserDetails, String> userName = new TableColumn<>("User");
 		userName.setCellValueFactory(new PropertyValueFactory<>("userName"));
+		userName.setMinWidth(30);
 		TableColumn<UserDetails, String> emailId = new TableColumn<>("emailId");
 		emailId.setCellValueFactory(new PropertyValueFactory<>("emailId"));
+		emailId.setMinWidth(90);
 		TableColumn<UserDetails, String> country = new TableColumn<>("country");
 		country.setCellValueFactory(new PropertyValueFactory<>("country"));
+		country.setMinWidth(40);
 		TableColumn<UserDetails, String> expectFor = new TableColumn<>("Expect For");
 		expectFor.setCellValueFactory(new PropertyValueFactory<>("expectFor"));
+		expectFor.setMinWidth(70);
 		TableColumn<UserDetails, Button> meetingLink = new TableColumn<>("Hangout Call");
 		meetingLink.setCellFactory(new Callback<TableColumn<UserDetails, Button>, TableCell<UserDetails, Button>>() {
-
+			
 			@Override
 			public TableCell call(TableColumn arg0) {
 
 				return new ButtonCell();
 			}
 		});
+		meetingLink.setMinWidth(80);
 		table.setEditable(true);
-		table.setPrefWidth(250);
-		table.setPrefHeight(250);
-		table.setLayoutX(180);
+		table.setFixedCellSize(100);
+		table.setPrefWidth(420);
+		table.setPrefHeight(160);
+		table.setLayoutX(100);
 		table.setLayoutY(80);
 		table.setPadding(new Insets(5));		
 		table.setItems(items);

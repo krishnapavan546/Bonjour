@@ -1,15 +1,12 @@
 package com.ysl.bonjour.controller;
 
 import java.io.IOException;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
-
 import com.ysl.bonjour.bean.UserDetails;
 import com.ysl.bonjour.core.BonjourRunner;
 import com.ysl.bonjour.util.Constants;
 import com.ysl.bonjour.util.SessionManager;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +21,11 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
+/**
+ * @author pku134
+ *
+ *This is to deal with login and user administrator related details. 
+ */
 public class UserController implements Controller {
 
 	@FXML
@@ -33,12 +35,11 @@ public class UserController implements Controller {
 	@FXML
 	private Button login;
 	private Scene scene;
-	private Map userMap;
+	
 
 	private Logger log = Logger.getLogger(UserController.class);
 	private SessionManager sessionManager = new SessionManager();
 	private UserDetails userDetails;
-
 	@Override
 	public Scene getScene() {
 		try {
@@ -58,7 +59,6 @@ public class UserController implements Controller {
 			scene = null;
 		}
 		return scene;
-
 	}
 
 	/**

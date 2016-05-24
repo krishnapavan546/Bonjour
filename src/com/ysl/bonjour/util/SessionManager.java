@@ -5,16 +5,13 @@ import java.util.Random;
 import com.ysl.bonjour.bean.UserDetails;
 
 public class SessionManager {
-
-	private UserDetails userDetails;
 	private double userSessionId;
 
 	public double createSession(UserDetails userDatails) {
-		
-		Random random=new Random();		
+		Random random = new Random();
 		return random.nextDouble();
 	}
-	
+
 	public double getUserSessionId() {
 		return userSessionId;
 	}

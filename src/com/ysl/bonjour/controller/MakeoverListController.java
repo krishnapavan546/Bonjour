@@ -30,23 +30,24 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
 
+
+/**
+ * @author pku134
+ *
+ * This class refers to meeting list details.
+ */
 public class MakeoverListController implements Controller {
 
-	@FXML
-	private Hyperlink joinMeeting;
-	// @FXML private TableView<MakeupIndicator> meetingListTable;
+	@FXML private Hyperlink joinMeeting;
 	private TableView<MakeupIndicator> meetingListTable = new TableView<>();
 	private Logger log = Logger.getLogger(MakeoverListController.class);
 	private Pane pane;
 	private Scene scene;
-	private Node node;
-
 	@Override
 	public Scene getScene() {
 		try {
 			log.info("INFO::In Controller of Makeover controller");
-			pane = (Pane) FXMLLoader
-					.load(MakeoverListController.class.getClassLoader().getResource(Constants.MAKUP_FXML_PATH));
+			pane = (Pane) FXMLLoader.load(MakeoverListController.class.getClassLoader().getResource(Constants.MAKUP_FXML_PATH));
 			if (pane != null) {
 				pane.setBackground(new Background(new BackgroundFill(Color.BLACK, new CornerRadii(10), new Insets(5))));
 				log.info("DEBUG::entered in to Setting Frame for Pane at MakeoverController");
@@ -60,7 +61,7 @@ public class MakeoverListController implements Controller {
 				scene.setRoot(pane);
 			} else {
 				log.error("ERROR::Parent for MakeoverList controller could not loaded");
-				throw new Exception();
+				
 			}
 		} catch (Exception e) {
 			log.error("ERROR::Error occured in getting Makeover Controller page", e);
@@ -73,16 +74,19 @@ public class MakeoverListController implements Controller {
 	private TableView<MakeupIndicator> addMeetingList(TableView<MakeupIndicator> meetingListTable1) {
 
 		List<MakeupIndicator> list = new ArrayList<>();
-		list.add(new MakeupIndicator("Pavan", new Date(),new Date()));
-		list.add(new MakeupIndicator("Kumar", new Date(),new Date()));
+		list.add(new MakeupIndicator(Constants.USER_NAME, new Date(),new Date()));
+		list.add(new MakeupIndicator(Constants.USER_NAME2, new Date(),new Date()));
 		ObservableList<MakeupIndicator> items = FXCollections.observableList(list);
 		TableColumn<MakeupIndicator, Date> date = new TableColumn<>("Date");
 		date.setCellValueFactory(new PropertyValueFactory<>("meetingDate"));
+		date.setMinWidth(140);
 		TableColumn<MakeupIndicator, Date> time = new TableColumn<>("Time");
 		time.setCellValueFactory(new PropertyValueFactory<>("meetingTime"));
+		time.setMinWidth(80);
 		TableColumn<MakeupIndicator, String> user = new TableColumn<>("User");
 		user.setCellValueFactory(new PropertyValueFactory<>("userName"));
-		TableColumn<MakeupIndicator, Hyperlink> meetingLink = new TableColumn<>("Join Meeting");
+		user.setMinWidth(80);
+		TableColumn<MakeupIndicator, Hyperlink> meetingLink = new TableColumn<>("");
 		meetingLink.setCellFactory(
 				new Callback<TableColumn<MakeupIndicator, Hyperlink>, TableCell<MakeupIndicator, Hyperlink>>() {
 
@@ -92,18 +96,20 @@ public class MakeoverListController implements Controller {
 						return new ButtonCell();
 					}
 				});
+		meetingLink.setMinWidth(80);
 
 		meetingListTable1.setEditable(true);
-		meetingListTable1.setPrefWidth(250);
+		meetingListTable1.setPrefWidth(370);
 		meetingListTable1.setPrefHeight(250);
-		meetingListTable1.setLayoutX(180);
+		meetingListTable1.setLayoutX(110);
 		meetingListTable1.setLayoutY(80);
 		meetingListTable1.setPadding(new Insets(5));
 		meetingListTable1.setPlaceholder(meetingListTable);
+		meetingListTable1.setFixedCellSize(105);
 		meetingListTable1.setCenterShape(true);
 		meetingListTable1.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		meetingListTable1.setItems(items);
-		boolean addAll = meetingListTable1.getColumns().addAll(date, time, meetingLink);		
+		meetingListTable1.getColumns().addAll(date, time, meetingLink);		
 		return meetingListTable1;
 	}
 

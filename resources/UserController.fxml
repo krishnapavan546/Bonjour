@@ -25,9 +25,9 @@
             <Image url="@/yslbeauty.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="28.0" fitWidth="252.0" layoutX="210.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="252.0" layoutX="240.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@/yslwhole.png" />
+            <Image url="@/imageswhite.jpg" />
          </image>
       </ImageView>
    </children>

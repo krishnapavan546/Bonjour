@@ -4,6 +4,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * @author pku134
+ * 
+ * This is a bean class to provide makeup details.
+ */
 public class MakeupIndicator 
 {
 	private String userName;

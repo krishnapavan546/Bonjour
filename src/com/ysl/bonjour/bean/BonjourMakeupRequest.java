@@ -2,6 +2,11 @@ package com.ysl.bonjour.bean;
 
 import com.ysl.bonjour.util.SessionManager;
 
+/**
+ * @author pku134
+ *
+ *This is Request Input class for all Bonjour and can pass thorugh the application
+ */
 public class BonjourMakeupRequest implements BonjourRequest{
 	
 	private SessionManager session;

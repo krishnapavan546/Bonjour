@@ -17,13 +17,13 @@ public class Constants {
 	public static final String USER_NAME = Configurator.getString("config_username"); //$NON-NLS-1$
 	public static final String PASSWORD = Configurator.getString("config_password"); //$NON-NLS-1$
 	public static final String SMTP_HOST = Configurator.getString("config_host"); //$NON-NLS-1$
-	
-	public static final List TO_EMAIL_List = null;
 	public static final String FROM_EMAIL_ID = Configurator.getString("config_tomailid"); //$NON-NLS-1$
 	public static final String SUBJECT = Configurator.getString("config_subject"); //$NON-NLS-1$
 	public static final String MAIL_BODY = Configurator.getString("config_mailbody") //$NON-NLS-1$
 								+ Configurator.getString("config_signature"); //$NON-NLS-1$
 	public static final String MDETAILS_FXML_PATH = Configurator.getString("config_makeup_details_controller_fxml_path"); //$NON-NLS-1$
 	public static final String CAPTUREDLATER_IMAGE_PATH = Configurator.getString("config_capturelater"); //$NON-NLS-1$
+	public static final String USER_NAME2 =Configurator.getString("config_username2");
+	public static final String COUNTRY = Configurator.getString("config_country") ;
 	
 }
